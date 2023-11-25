@@ -1,0 +1,183 @@
+/* Seletor universal de todos os elementos possiveis dentro do nosso HTML.  RESET DO CSS */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Usando o ROOT, tudo que estiver dentro dessa VAR será aplicado direto no html */
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat; 
+  background-position: top, center; 
+  background-size: cover; 
+  */
+
+  /* Usando um atalho */
+
+  background: var(--bg-url) no-repeat top center/cover; /* Aqui usamos todos os comandos de cima apenas dentro 
+  de um background*/
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+/* PROFILE */
+
+/* Pegamos a TAG pai da nossa IMG e usamos o align total de tudo que tem dentro dela na nossa IMG*/
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+/* O IMG no final do profile, serve para localizar a imagem que está dentro do Profile. */
+#profile img {
+  width: 112px;
+}
+
+/* Aqui pegamos o paragráfo do nosso @ que está dentro do profile*/
+#profile p {
+  font-weight: 500; /* Isso aqui seria o peso do nosso BOLD da letra */
+  font-size: 16px; /* Tamanho da Fonte, os navegadores por padrão já tem as fontes definidas em 16px*/
+  line-height: 24px; /* Altura da Linha da nossa fonte, no caso é da imagem para baixo dela.*/
+  margin-top: 8px;
+}
+
+/* SWITCH */
+
+/* Qualquer item absolute dentro do switch button, vai ficar dentro dele usando esses comando de fora */
+#switch {
+  position: relative;
+  width: 66px;
+
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 50%;
+  right: 1;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+/* Aqui estamos fazendo a transição de botões para o light mode */
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+.click #switch {
+  transition: 3s;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+  transition: 1s;
+}
+
+/* LINKS */
+ul {
+  list-style: none;
+  display: flex; /* Display flex, serve para encaixar todo nosso conteudo dentro da nossa box */
+  flex-direction: column; /* Serve para deixarmos nossas BOX em colunas e não uma na frente da outra */
+  gap: 16px; /* Serve para dar espaços entre uma BOX e outra */
+
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex; /* O display flex, cria uma linha invisivel bem no meio da nossa box */
+  align-items: center; /* O align itens, alinha os items da box, com a linha invisivel do display flex */
+  justify-content: center; /* O justify, alinha os items no meio da nossa box */
+
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  text-decoration: none; /* serve para tirarmos a linha debaixo das letras com links vinculados */
+  font-weight: 500;
+
+  transition: background 0.4s;
+}
+
+/* Hover seria um pseudo selector Uma pseudo-classe CSS é uma palavra-chave adicionada a seletores que especifica um estado especial do elemento selecionado. Por exemplo, :hover pode ser usado para alterar a cor de um botão quando o usuário passar o cursor sobre ele. */
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/* Social Links */
+#social-links {
+  padding: 24px 0;
+  display: flex; /* Com o display flex, conseguimos habilitar o uso do GAP */
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
+
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  transition: background 0.3s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px;
+  text-align: center;
+}
